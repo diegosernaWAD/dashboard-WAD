@@ -1,0 +1,66 @@
+relationship 3c199b82-c12a-4d28-a143-f9b29c60220e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Libro_Auxiliar.Fecha_vencimiento
+	toColumn: LocalDateTable_73b827c4-b994-4f3c-80e3-666294829589.Date
+
+relationship 10284dd3-9f17-4862-84f1-451d4c886437
+	joinOnDateBehavior: datePartOnly
+	fromColumn: table_revenue.Fecha_vencimiento
+	toColumn: LocalDateTable_09a18061-64b7-476d-bbca-2f26af033579.Date
+
+relationship 22d68fa8-1576-0be8-9a91-0ad57f4b6ef9
+	fromColumn: table_revenue.Identificacion_Tercero
+	toColumn: table_third_parties.Identificacion
+
+relationship 762474a6-c8bd-462b-a322-cc2e9f29df04
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendar.Date
+	toColumn: LocalDateTable_c026e457-2fdf-4ed9-898c-d5a57d8a1d12.Date
+
+relationship b254a598-2709-1d55-7589-172a475ffc46
+	fromColumn: table_revenue.Fecha
+	toColumn: Calendar.Date
+
+relationship f2d9363a-d251-4006-b435-4f67a33a00b9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Prueba1.Vencimiento
+	toColumn: LocalDateTable_885ba77f-712e-4963-83b8-06b7108b9f52.Date
+
+relationship 6b4407e7-e635-2995-4551-584edd7488ff
+	fromColumn: Libro_Auxiliar.Fecha
+	toColumn: Calendar.Date
+
+relationship 86757635-b176-4644-a747-5de5c12626c1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: balance_sheet.Fecha_vencimiento
+	toColumn: LocalDateTable_d3fb056e-3e29-4de0-a73c-31a3334ee1cb.Date
+
+relationship b054699a-53d6-47df-91e0-bd83a25bb362
+	joinOnDateBehavior: datePartOnly
+	fromColumn: income_statement.Fecha_vencimiento
+	toColumn: LocalDateTable_b136cac5-4882-4baa-a9fd-c49642e76665.Date
+
+relationship d1dbfe88-d076-db33-a0ee-859ee41d1ce8
+	fromColumn: income_statement.Fecha
+	toColumn: Calendar.Date
+
+relationship 3ebb652c-6a88-e7c1-1862-bf90cab01366
+	fromColumn: income_statement.Codigo_Cuenta
+	toColumn: movement_accounts.Codigo_Cuenta
+
+relationship a0c71c29-1519-03c3-1bd9-4b3f4a39d8c7
+	fromColumn: income_statement.Identificacion_Tercero
+	toColumn: table_third_parties.Identificacion
+
+relationship 244c3d51-b432-cb10-511a-0dc41727b75f
+	fromColumn: balance_sheet.Codigo_Cuenta
+	toColumn: movement_accounts.Codigo_Cuenta
+
+relationship 6f4ddc97-95d3-659b-1ba3-4f6c957564bb
+	fromColumn: balance_sheet.Fecha
+	toColumn: Calendar.Date
+
+relationship 12b16439-1ac0-1507-438b-9759da9be862
+	fromColumn: balance_sheet.Identificacion_Tercero
+	toColumn: table_third_parties.Identificacion
+

@@ -1,0 +1,54 @@
+table movement_accounts
+	lineageTag: a4bbd23b-9122-4f75-ac30-425fb705d48f
+
+	column Codigo_Cuenta
+		lineageTag: c15c5331-7b33-4692-a9e7-d657be889987
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Libro_Auxiliar[Codigo_Cuenta]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nivel = LEFT(movement_accounts[Codigo_Cuenta],1)&"-"&LOOKUPVALUE(table_accounts[CuentaContable],table_accounts[CódigoCuentaContable],LEFT(movement_accounts[Codigo_Cuenta],1))
+		lineageTag: a1762631-8d1b-42ce-bcd1-ca7d84f7ff5f
+		summarizeBy: none
+		sortByColumn: Cuenta_Nivel
+
+		annotation SummarizationSetBy = Automatic
+
+	column Grupo = LEFT(movement_accounts[Codigo_Cuenta],2)&"-"&LOOKUPVALUE(table_accounts[CuentaContable],table_accounts[CódigoCuentaContable],LEFT(movement_accounts[Codigo_Cuenta],2))
+		lineageTag: f26ab2c7-9d4e-46ca-bf60-46e664e059ee
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Auxiliar = LEFT(movement_accounts[Codigo_Cuenta],8)&"-"&LOOKUPVALUE(table_accounts[CuentaContable],table_accounts[CódigoCuentaContable],LEFT(movement_accounts[Codigo_Cuenta],8))
+		lineageTag: c9e14df3-b0e6-4a80-b2b9-40794f49c5d2
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cuenta = LEFT(movement_accounts[Codigo_Cuenta],6)&"-"&LOOKUPVALUE(table_accounts[CuentaContable],table_accounts[CódigoCuentaContable],LEFT(movement_accounts[Codigo_Cuenta],6))
+		lineageTag: c58f5978-9e02-4435-acab-4fabc79940cd
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cuenta_Nivel = LEFT(movement_accounts[Codigo_Cuenta],1)
+		lineageTag: 253eebd0-e44b-46ea-bf4a-3957116d8d82
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cuenta_Grupo = LEFT(movement_accounts[Codigo_Cuenta],2)
+		lineageTag: 02cbb628-b349-4b39-9b0d-db076d37772b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition movement_accounts = calculated
+		mode: import
+		source = DISTINCT(Libro_Auxiliar[Codigo_Cuenta])
+
+	annotation PBI_Id = 393dff176680441aa18ef13651407091
+

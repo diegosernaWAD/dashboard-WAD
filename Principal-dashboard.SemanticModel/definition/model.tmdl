@@ -1,0 +1,39 @@
+model Model
+	culture: es-ES
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-ES
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Libro_Auxiliar","Libro_Auxiliar (2)","table_revenue","table_third_parties","M_Revenue","Prueba1","table_accounts","balance_sheet","income_statement","M_IncomeStatement","M_BalanceSheet"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.144.878.0 (25.06)+9cca29236de5114792f4d7188221f91ad4a5cc50
+
+annotation PBI_ProTooling = ["DaxQueryView_Desktop","DevMode"]
+
+ref table Libro_Auxiliar
+ref table DateTableTemplate_6af0f197-4977-4b6b-ba3b-0da1ebc45283
+ref table LocalDateTable_73b827c4-b994-4f3c-80e3-666294829589
+ref table 'Libro_Auxiliar (2)'
+ref table table_revenue
+ref table LocalDateTable_09a18061-64b7-476d-bbca-2f26af033579
+ref table table_third_parties
+ref table Calendar
+ref table LocalDateTable_c026e457-2fdf-4ed9-898c-d5a57d8a1d12
+ref table M_Revenue
+ref table Prueba1
+ref table LocalDateTable_885ba77f-712e-4963-83b8-06b7108b9f52
+ref table table_accounts
+ref table balance_sheet
+ref table LocalDateTable_d3fb056e-3e29-4de0-a73c-31a3334ee1cb
+ref table income_statement
+ref table LocalDateTable_b136cac5-4882-4baa-a9fd-c49642e76665
+ref table movement_accounts
+ref table M_IncomeStatement
+ref table M_BalanceSheet
+
+ref cultureInfo es-ES
+

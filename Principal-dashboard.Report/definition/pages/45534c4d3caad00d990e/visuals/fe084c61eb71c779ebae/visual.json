@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "fe084c61eb71c779ebae",
+  "position": {
+    "x": 329.64932645844016,
+    "y": 373.187916745404,
+    "z": 3000,
+    "height": 347.06476257322572,
+    "width": 950.38522797829546,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "pieChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "income_statement"
+                    }
+                  },
+                  "Property": "Tercero"
+                }
+              },
+              "queryRef": "income_statement.Tercero",
+              "nativeQueryRef": "Tercero",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "M_IncomeStatement"
+                    }
+                  },
+                  "Property": "Revenue1"
+                }
+              },
+              "queryRef": "M_IncomeStatement.Revenue1",
+              "nativeQueryRef": "Revenue1"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "M_IncomeStatement"
+                  }
+                },
+                "Property": "Revenue1"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

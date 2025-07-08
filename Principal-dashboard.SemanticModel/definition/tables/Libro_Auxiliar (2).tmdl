@@ -1,0 +1,117 @@
+table 'Libro_Auxiliar (2)'
+	isHidden
+	lineageTag: eb865489-2d5c-494a-9851-e712f80088b2
+
+	column CódigoCuentaContable
+		dataType: string
+		isHidden
+		lineageTag: 9b0ed7f1-0873-4dc5-8e50-3105dddb7dff
+		summarizeBy: none
+		sourceColumn: CódigoCuentaContable
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column NomCuenta
+		dataType: string
+		isHidden
+		lineageTag: c3336237-3676-48a8-bd5b-8ef06428eabd
+		summarizeBy: none
+		sourceColumn: NomCuenta
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SumaDeDébito
+		dataType: double
+		isHidden
+		lineageTag: 199f919b-12a3-4802-b092-2c62ff906862
+		summarizeBy: sum
+		sourceColumn: SumaDeDébito
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SumaDeCrédito
+		dataType: double
+		isHidden
+		lineageTag: 14abc581-fdfe-46d6-a6d5-9104b6721d6f
+		summarizeBy: sum
+		sourceColumn: SumaDeCrédito
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Efecto
+		dataType: double
+		isHidden
+		lineageTag: a37e66fc-ddab-4ecf-a558-fc3177948b3b
+		summarizeBy: sum
+		sourceColumn: Efecto
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IdEmpresa
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: dcc7edad-8fed-48ef-a74d-3208dcfe8ad9
+		summarizeBy: sum
+		sourceColumn: IdEmpresa
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdInventario
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 87525001-c9bf-4b8f-99dd-54977fd044a3
+		summarizeBy: sum
+		sourceColumn: IdInventario
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CuentasContablesTipos
+		dataType: string
+		isHidden
+		lineageTag: 6513669f-5d7f-4905-851a-3c26ddb6483f
+		summarizeBy: none
+		sourceColumn: CuentasContablesTipos
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Libro_Auxiliar (2)' = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("SRFWDCONT01\WORLDOFFICE19", "WEARE DEV SAS"),
+				    #"Filas filtradas" = Table.SelectRows(Origen, each ([Item] = "Activos_Fijos_Acumulados")),
+				    dbo_Activos_Fijos_Acumulados = #"Filas filtradas"{[Schema="dbo",Item="Activos_Fijos_Acumulados"]}[Data],
+				    #"Función invocadadbo_Activos_Fijos_Acumulados" = dbo_Activos_Fijos_Acumulados(#datetime(2025, 5, 31, 0, 0, 0), "1", 1)
+				in
+				    #"Función invocadadbo_Activos_Fijos_Acumulados"
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,71 @@
+table M_Revenue
+	lineageTag: 1d6a3038-1b24-46f6-8baa-dfdbcdc5bb3c
+
+	measure Total_billed = ```
+			CALCULATE(
+			        SUM(table_revenue[Credito]),
+			        OR(
+			            LEFT(table_revenue[Codigo_Cuenta],2)="41",
+			            LEFT(table_revenue[Codigo_Cuenta],2)="24"
+			        )
+			        
+			        
+			    )
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 6f7242c5-4b5d-4925-a039-8d228a6b3309
+
+	measure Taxes = CALCULATE(SUM(table_revenue[Credito]),LEFT(table_revenue[Codigo_Cuenta],2)="24")
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 3cebe44e-a796-432e-84d4-8e8f4cb43ea9
+
+	measure Revenue = CALCULATE(SUM(table_revenue[Credito]),LEFT(table_revenue[Codigo_Cuenta],2)="41")
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: ace63699-f5c6-4dfb-849d-541506f45cda
+
+	measure Devoluciones = ```
+			CALCULATE(
+			        SUM(table_revenue[Debito]),
+			        OR(
+			            LEFT(table_revenue[Codigo_Cuenta],2)="41",
+			            LEFT(table_revenue[Codigo_Cuenta],2)="24"
+			        )        
+			    )
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: dcd70a27-c351-4a0c-8a81-ca1865cd6cdf
+
+	measure 'Ventas netas' = M_Revenue[Revenue]-[Devoluciones]
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 94c5af26-8e36-4ca1-b462-6508e9d61ae3
+
+	measure Revenue2024 =
+			CALCULATE(SUM(table_revenue[Credito]),LEFT(table_revenue[Codigo_Cuenta],2)="41",
+			table_revenue[Fecha]>=DATE(2024,01,01),
+			table_revenue[Fecha]<=DATE(2024,12,31)
+			)
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: d3be7cb2-e78f-4588-8ee5-242d4fac02fc
+
+	measure Revenue2025 =
+			CALCULATE(SUM(table_revenue[Credito]),LEFT(table_revenue[Codigo_Cuenta],2)="41",
+			table_revenue[Fecha]>=DATE(2025,01,01),
+			table_revenue[Fecha]<=DATE(2025,12,31)
+			)
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 6291701c-6c68-4311-a5b0-2e5b58b21008
+
+	partition M_Revenue = m
+		mode: import
+		source =
+				let
+				    Origen = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Columna1 = _t]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(Origen,{{"Columna1", type text}}),
+				    #"Columnas quitadas" = Table.RemoveColumns(#"Tipo cambiado",{"Columna1"})
+				in
+				    #"Columnas quitadas"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

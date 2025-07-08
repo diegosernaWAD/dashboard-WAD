@@ -1,0 +1,247 @@
+table Libro_Auxiliar
+	lineageTag: ae0433bb-9c36-4622-9f7c-e77a4310c63a
+
+	column Tipo_Documento
+		dataType: string
+		lineageTag: 2cb82eb4-64af-47e4-8192-29df2c45f1ef
+		summarizeBy: none
+		sourceColumn: Tipo_Documento
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nombre_Documento
+		dataType: string
+		lineageTag: 31f7bf57-8476-4e96-986c-abcd5edfbb8a
+		summarizeBy: none
+		sourceColumn: Nombre_Documento
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Numero_Documento
+		dataType: double
+		lineageTag: a928d10f-c934-4c70-b2cd-f10ab46ab9c8
+		summarizeBy: sum
+		sourceColumn: Numero_Documento
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Fecha
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d02faa22-b796-4f6a-8c7c-8bca0aee10d5
+		summarizeBy: none
+		sourceColumn: Fecha
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Tercero
+		dataType: string
+		lineageTag: f0c1624c-9ce4-45c5-bc33-ae588d9e234e
+		summarizeBy: none
+		sourceColumn: Tercero
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Numero_Documento_Externo
+		dataType: string
+		lineageTag: 7f4b11db-2536-420e-b7bf-4727ba84b0fa
+		summarizeBy: none
+		sourceColumn: Numero_Documento_Externo
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Concepto_Encabezado
+		dataType: string
+		lineageTag: 1a57d239-ebaf-4c3b-be14-2a24413c032c
+		summarizeBy: none
+		sourceColumn: Concepto_Encabezado
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Codigo_Cuenta
+		dataType: string
+		lineageTag: c99106ac-9ebb-4c94-b64f-2fbee8b3adbc
+		summarizeBy: none
+		sourceColumn: Codigo_Cuenta
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nombre_Cuenta
+		dataType: string
+		lineageTag: d49f11dc-5e24-4a6f-bdd3-7e266f7aeb2c
+		summarizeBy: none
+		sourceColumn: Nombre_Cuenta
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Debito
+		dataType: double
+		lineageTag: 338e1629-f565-47a8-87b5-f1f8b4b78711
+		summarizeBy: sum
+		sourceColumn: Debito
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Credito
+		dataType: double
+		lineageTag: a2a7574d-2568-4b55-8cff-e316d65a7d1e
+		summarizeBy: sum
+		sourceColumn: Credito
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Concepto_Detalle
+		dataType: string
+		lineageTag: fa1a7cbb-20da-4ea9-b96f-ca5d77b01c68
+		summarizeBy: none
+		sourceColumn: Concepto_Detalle
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Centro_de_Costos
+		dataType: string
+		lineageTag: 5eab53ed-4067-4b70-ac63-9aab6648af70
+		summarizeBy: none
+		sourceColumn: Centro_de_Costos
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Identificacion_Tercero
+		dataType: string
+		lineageTag: 66a72c44-9dcd-4339-9338-31c03d103547
+		summarizeBy: none
+		sourceColumn: Identificacion_Tercero
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fecha_vencimiento
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: bb8c9277-75cb-4df8-b8ab-d0fa679ea126
+		summarizeBy: none
+		sourceColumn: Fecha_vencimiento
+
+		variation Variación
+			isDefault
+			relationship: 3c199b82-c12a-4d28-a143-f9b29c60220e
+			defaultHierarchy: LocalDateTable_73b827c4-b994-4f3c-80e3-666294829589.'Jerarquía de fechas'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Nivel
+		dataType: string
+		lineageTag: 96a4d68e-7ed6-45e2-8f06-057d4194c208
+		summarizeBy: none
+		sourceColumn: Nivel
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Grupo
+		dataType: string
+		lineageTag: edf3d06f-aa79-4015-bdf0-1acbcdc9a93d
+		summarizeBy: none
+		sourceColumn: Grupo
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cuenta
+		dataType: string
+		lineageTag: dd3f0f7b-8e60-41fa-9626-43b03ccc1ce1
+		summarizeBy: none
+		sourceColumn: Cuenta
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subcuente
+		dataType: string
+		lineageTag: cb42d379-7c6e-444b-8169-605459f9efd6
+		summarizeBy: none
+		sourceColumn: Subcuente
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nivel_Nombre
+		dataType: string
+		lineageTag: 35b46f55-7863-4744-be67-5ba96866f052
+		summarizeBy: none
+		sourceColumn: Nivel_Nombre
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Libro_Auxiliar = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("SRFWDCONT01\WORLDOFFICE19", "WEARE DEV SAS"),
+				    dbo_Vista_Auxiliar_Movimientos_Contables = Origen{[Schema="dbo",Item="Vista_Auxiliar_Movimientos_Contables"]}[Data],
+				    #"Columnas quitadas" = Table.RemoveColumns(dbo_Vista_Auxiliar_Movimientos_Contables,{"Empresa", "prefijo", "Recaudado_Por", "Verificado", "Clasificación", "Clasificacion", "Forma_De_Pago", "Encabezado_Personalizado_1", "Encabezado_Personalizado_2", "Encabezado_Personalizado_3", "Encabezado_Personalizado_4", "Encabezado_Personalizado_5", "Encabezado_Personalizado_6", "Encabezado_Personalizado_7", "Encabezado_Personalizado_8", "Encabezado_Personalizado_9", "Encabezado_Personalizado_10", "Encabezado_Personalizado_11", "Encabezado_Personalizado_12", "Encabezado_Personalizado_13", "Encabezado_Personalizado_14", "Encabezado_Personalizado_15", "Moneda", "TRM", "Débito", "Crédito", "AbonaADocumento", "Autonumerico", "DV_Tercero", "Identificacion_Empleado", "Tipo_Identificacion_Empleado", "Sucursal", "Dirección", "Direccion", "Fecha_Emision", "Clasificacion_Dian", "Cheque", "Activo_Fijo", "Usuario_Creador_Documento", "SenNoDeducible", "Pago_Retencion", "Iva_Costo", "ImpoConsumo_Costo", "SenAprobado", "PuntoEmision", "Consecutivo", "Codigo_Retencion", "Fecha_Entrega_Doc", "FechaRecaudo", "Ciudad_Encabezado", "SenalExcNIIFS", "DocImportacion", "Suc_Punto_Emision", "Comprobante", "Sustento", "Autoriza", "CuentasContables_Personalizado6", "CuentasContables_Personalizado7", "CuentasContables_Personalizado8", "CuentasContables_Personalizado9", "CuentasContables_Personalizado10", "CuentasContables_Personalizado1", "CuentasContables_Personalizado2", "CuentasContables_Personalizado3", "CuentasContables_Personalizado4", "CuentasContables_Personalizado5", "Anulado", "Prefijo_Documento_Externo", "Base_Retencion", "Valor_retenido", "Porcentaje_retención", "Porcentaje_retencion", "TipoIdentificacion_Tercero", "Nombre_Pais", "Codigo_Pais", "Valor_Moneda_Extranjera", "Codigo_Centro_Costos", "Empleado"}),
+				    #"Personalizada agregada" = Table.AddColumn(#"Columnas quitadas", "Fecha_vencimiento", each if [Vencimiento] = null then [Fecha] else [Vencimiento]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(#"Personalizada agregada",{{"Fecha_vencimiento", type date}, {"Fecha", type date}}),
+				    #"Columnas quitadas1" = Table.RemoveColumns(#"Tipo cambiado",{"Vencimiento"}),
+				    #"Filas ordenadas" = Table.Sort(#"Columnas quitadas1",{{"Fecha", Order.Ascending}}),
+				    #"Primeros caracteres insertados" = Table.AddColumn(#"Filas ordenadas", "Primeros caracteres", each Text.Start([Codigo_Cuenta], 1), type text),
+				    #"Columnas con nombre cambiado" = Table.RenameColumns(#"Primeros caracteres insertados",{{"Primeros caracteres", "Nivel"}}),
+				    #"Primeros caracteres insertados1" = Table.AddColumn(#"Columnas con nombre cambiado", "Primeros caracteres", each Text.Start([Codigo_Cuenta], 2), type text),
+				    #"Primeros caracteres insertados2" = Table.AddColumn(#"Primeros caracteres insertados1", "Primeros caracteres.1", each Text.Start([Codigo_Cuenta], 4), type text),
+				    #"Primeros caracteres insertados3" = Table.AddColumn(#"Primeros caracteres insertados2", "Primeros caracteres.2", each Text.Start([Codigo_Cuenta], 6), type text),
+				    #"Columnas con nombre cambiado1" = Table.RenameColumns(#"Primeros caracteres insertados3",{{"Nivel", "Nivel"}, {"Primeros caracteres", "Grupo"}, {"Primeros caracteres.2", "Subcuente"}, {"Primeros caracteres.1", "Cuenta"}}),
+				    #"Consultas combinadas" = Table.NestedJoin(#"Columnas con nombre cambiado1", {"Nivel"}, table_accounts, {"CódigoCuentaContable"}, "table_accounts", JoinKind.LeftOuter),
+				    #"Se expandió table_accounts" = Table.ExpandTableColumn(#"Consultas combinadas", "table_accounts", {"CuentaContable"}, {"table_accounts.CuentaContable"}),
+				    #"Columnas con nombre cambiado2" = Table.RenameColumns(#"Se expandió table_accounts",{{"table_accounts.CuentaContable", "Nivel_Nombre"}})
+				in
+				    #"Columnas con nombre cambiado2"
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

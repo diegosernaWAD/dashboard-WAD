@@ -1,0 +1,29 @@
+table M_BalanceSheet
+	lineageTag: 0b8060da-510e-4c9e-923f-4adebbfc0da1
+
+	measure 'Valor balance' = ```
+			
+			    var movimientoLibroAuxiliar =IF(
+			    SELECTEDVALUE(movement_accounts[Cuenta_Nivel]) IN {"1", "2", "3"}
+			    ,CALCULATE(SUM(balance_sheet[Movimiento]),
+			        FILTER( ALL('Calendar'),
+			        'Calendar'[Date] <= MAX('Calendar'[Date])
+			    )), SUM(balance_sheet[Movimiento])
+			)
+			RETURN IF(movimientoLibroAuxiliar<0,movimientoLibroAuxiliar*-1,movimientoLibroAuxiliar)
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 7b8833da-6370-4f0b-bb5a-fae36d9da20f
+
+	partition M_BalanceSheet = m
+		mode: import
+		source =
+				let
+				    Origen = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Columna1 = _t]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(Origen,{{"Columna1", type text}}),
+				    #"Columnas quitadas" = Table.RemoveColumns(#"Tipo cambiado",{"Columna1"})
+				in
+				    #"Columnas quitadas"
+
+	annotation PBI_ResultType = Table
+

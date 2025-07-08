@@ -1,0 +1,41 @@
+table Calendar
+	lineageTag: d904f5f5-3e1b-4eaf-aa00-5dd28473d386
+
+	column Date
+		formatString: General Date
+		lineageTag: 2364fe5c-11b7-4f59-b18e-2cb78aeac175
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variación
+			isDefault
+			relationship: 762474a6-c8bd-462b-a322-cc2e9f29df04
+			defaultHierarchy: LocalDateTable_c026e457-2fdf-4ed9-898c-d5a57d8a1d12.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day = FORMAT('Calendar'[Date],"DDDD")
+		lineageTag: cf1c10dd-d20e-4619-a447-5377928b1f44
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month = FORMAT('Calendar'[Date],"MMMM")
+		lineageTag: dba473b3-98ee-4b75-9b67-ee09f6af9eb5
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column year = FORMAT('Calendar'[Date],"YYYY")
+		lineageTag: cdbdcac0-686a-485c-918e-e5165b8874d2
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Calendar = calculated
+		mode: import
+		source = CALENDAR(MIN(Libro_Auxiliar[Fecha]),MAX(Libro_Auxiliar[Fecha_vencimiento]))
+
+	annotation PBI_Id = 496bfb2959764e16828010966911e939
+

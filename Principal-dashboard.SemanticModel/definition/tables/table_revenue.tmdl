@@ -1,0 +1,204 @@
+table table_revenue
+	lineageTag: db51f5d4-e46c-425f-9162-4b65cd0c957d
+
+	column Tipo_Documento
+		dataType: string
+		isHidden
+		lineageTag: 8f19eee2-14a4-4f30-ac17-4cdd90aa180e
+		summarizeBy: none
+		sourceColumn: Tipo_Documento
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Numero_Documento
+		dataType: double
+		isHidden
+		lineageTag: 26e1cd08-5e95-45b3-bc0d-a6aad0a5f6a2
+		summarizeBy: sum
+		sourceColumn: Numero_Documento
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Fecha
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: ee495f97-a4fd-451a-bda1-9ebcf1cba018
+		summarizeBy: none
+		sourceColumn: Fecha
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Concepto_Encabezado
+		dataType: string
+		isHidden
+		lineageTag: a2513654-325d-4283-8f0d-163c664e73cc
+		summarizeBy: none
+		sourceColumn: Concepto_Encabezado
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Codigo_Cuenta
+		dataType: string
+		isHidden
+		lineageTag: 7b2b22f3-bbbd-4ea3-bea7-7dd9c3134cd2
+		summarizeBy: none
+		sourceColumn: Codigo_Cuenta
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Debito
+		dataType: double
+		lineageTag: 135c80f9-f0f5-4eea-a294-3c878121d808
+		summarizeBy: sum
+		sourceColumn: Debito
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Credito
+		dataType: double
+		lineageTag: b05d8656-0f38-4c7d-8c5d-f6da49a8ad79
+		summarizeBy: sum
+		sourceColumn: Credito
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Concepto_Detalle
+		dataType: string
+		isHidden
+		lineageTag: 8c3507d2-7e54-4650-b504-235a275b287c
+		summarizeBy: none
+		sourceColumn: Concepto_Detalle
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Centro_de_Costos
+		dataType: string
+		lineageTag: 6443d90e-ea14-474b-a652-1a6f91c57931
+		summarizeBy: none
+		sourceColumn: Centro_de_Costos
+
+		annotation SummarizationSetBy = Automatic
+
+	column Identificacion_Tercero
+		dataType: string
+		isHidden
+		lineageTag: 272a050d-33c1-4570-9897-ded111325f5d
+		summarizeBy: none
+		sourceColumn: Identificacion_Tercero
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fecha_vencimiento
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 9649e5a7-c222-4648-995f-995b91d8d430
+		summarizeBy: none
+		sourceColumn: Fecha_vencimiento
+
+		variation Variación
+			isDefault
+			relationship: 10284dd3-9f17-4862-84f1-451d4c886437
+			defaultHierarchy: LocalDateTable_09a18061-64b7-476d-bbca-2f26af033579.'Jerarquía de fechas'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Nivel
+		dataType: string
+		isHidden
+		lineageTag: 293ea57f-da4f-481a-9b20-b776eee8d83f
+		summarizeBy: none
+		sourceColumn: Nivel
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Grupo
+		dataType: string
+		isHidden
+		lineageTag: eb8750ef-9623-45d4-9549-c143d37bdb43
+		summarizeBy: none
+		sourceColumn: Grupo
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cuenta
+		dataType: string
+		isHidden
+		lineageTag: a0cfbd83-aa27-4634-a84f-cbe2affa396b
+		summarizeBy: none
+		sourceColumn: Cuenta
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subcuente
+		dataType: string
+		isHidden
+		lineageTag: 7ff33141-6f84-4027-8e5a-204d95f9ac53
+		summarizeBy: none
+		sourceColumn: Subcuente
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nivel_Nombre
+		dataType: string
+		lineageTag: 91bbd46b-b3cd-44e4-b718-91d1075e6c2c
+		summarizeBy: none
+		sourceColumn: Nivel_Nombre
+
+		annotation SummarizationSetBy = Automatic
+
+	partition table_revenue = m
+		mode: import
+		source =
+				let
+				    Origen = Libro_Auxiliar,
+				    #"Filas filtradas" = Table.SelectRows(Origen, each [Nombre_Documento] = "Factura de Venta" or [Nombre_Documento] = "Nota Crédito para Clientes" or [Nombre_Documento] = "Nota Débito para Clientes"),
+				    #"Columnas quitadas" = Table.RemoveColumns(#"Filas filtradas",{"Numero_Documento_Externo"}),
+				    #"Valor reemplazado" = Table.ReplaceValue(#"Columnas quitadas",null,"",Replacer.ReplaceValue,{"Centro_de_Costos"}),
+				    #"Columnas quitadas1" = Table.RemoveColumns(#"Valor reemplazado",{"Nombre_Documento", "Tercero", "Nombre_Cuenta"})
+				in
+				    #"Columnas quitadas1"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

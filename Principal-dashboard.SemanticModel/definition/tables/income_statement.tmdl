@@ -1,0 +1,203 @@
+table income_statement
+	lineageTag: c46779a7-7bc7-4e17-ab3b-8898d423f535
+
+	column Tipo_Documento
+		dataType: string
+		lineageTag: d707f129-33e4-4187-9473-4b31b4f99241
+		summarizeBy: none
+		sourceColumn: Tipo_Documento
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nombre_Documento
+		dataType: string
+		lineageTag: 82932b61-14a7-4cb2-946d-386f668473d0
+		summarizeBy: none
+		sourceColumn: Nombre_Documento
+
+		annotation SummarizationSetBy = Automatic
+
+	column Numero_Documento
+		dataType: double
+		lineageTag: 0aa5dccd-b3f2-4050-a4cf-413b6675b682
+		summarizeBy: sum
+		sourceColumn: Numero_Documento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Fecha
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7698f960-2200-4a4d-af20-e1aa43febcb1
+		summarizeBy: none
+		sourceColumn: Fecha
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Tercero
+		dataType: string
+		lineageTag: a04da3f5-4c88-4def-aff7-ebd4c8006cee
+		summarizeBy: none
+		sourceColumn: Tercero
+
+		annotation SummarizationSetBy = Automatic
+
+	column Numero_Documento_Externo
+		dataType: string
+		lineageTag: 03401ad0-8254-4ec3-9660-883515f73098
+		summarizeBy: none
+		sourceColumn: Numero_Documento_Externo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Concepto_Encabezado
+		dataType: string
+		lineageTag: da3dd4c0-edcf-49dd-8363-42f8d4687422
+		summarizeBy: none
+		sourceColumn: Concepto_Encabezado
+
+		annotation SummarizationSetBy = Automatic
+
+	column Codigo_Cuenta
+		dataType: string
+		lineageTag: 9ae03b04-545e-4443-a033-fdf7f31f05c2
+		summarizeBy: none
+		sourceColumn: Codigo_Cuenta
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nombre_Cuenta
+		dataType: string
+		lineageTag: a329a541-5992-4c2e-b6b0-e3e836453a31
+		summarizeBy: none
+		sourceColumn: Nombre_Cuenta
+
+		annotation SummarizationSetBy = Automatic
+
+	column Debito
+		dataType: double
+		lineageTag: 98fca43e-6a44-4ef7-b92f-2bc6efe77e6a
+		summarizeBy: sum
+		sourceColumn: Debito
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Credito
+		dataType: double
+		lineageTag: 0219973d-a7c6-458f-9181-a754d37d3fef
+		summarizeBy: sum
+		sourceColumn: Credito
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Concepto_Detalle
+		dataType: string
+		lineageTag: ce928978-04da-45a2-9d36-048be4484c9b
+		summarizeBy: none
+		sourceColumn: Concepto_Detalle
+
+		annotation SummarizationSetBy = Automatic
+
+	column Centro_de_Costos
+		dataType: string
+		lineageTag: 2c101912-8bd7-46a9-95e1-c51e74d3da0e
+		summarizeBy: none
+		sourceColumn: Centro_de_Costos
+
+		annotation SummarizationSetBy = Automatic
+
+	column Identificacion_Tercero
+		dataType: string
+		lineageTag: 792c423e-36be-4049-a8f3-efe026ae4ab6
+		summarizeBy: none
+		sourceColumn: Identificacion_Tercero
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fecha_vencimiento
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 12cf2fe3-d334-48d4-b626-19327f6d347b
+		summarizeBy: none
+		sourceColumn: Fecha_vencimiento
+
+		variation Variación
+			isDefault
+			relationship: b054699a-53d6-47df-91e0-bd83a25bb362
+			defaultHierarchy: LocalDateTable_b136cac5-4882-4baa-a9fd-c49642e76665.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Nivel
+		dataType: string
+		lineageTag: 838d2dbc-c1ab-4942-8310-36c9595178e3
+		summarizeBy: none
+		sourceColumn: Nivel
+
+		annotation SummarizationSetBy = Automatic
+
+	column Grupo
+		dataType: string
+		lineageTag: 90c366dc-6621-4459-a0d8-f7ca1d2a0d63
+		summarizeBy: none
+		sourceColumn: Grupo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cuenta
+		dataType: string
+		lineageTag: d798e965-0ebf-43ad-8b10-a3d7d9fbc6af
+		summarizeBy: none
+		sourceColumn: Cuenta
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subcuente
+		dataType: string
+		lineageTag: b35f6922-da30-40e1-8092-c2014ef61f30
+		summarizeBy: none
+		sourceColumn: Subcuente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Movimiento = income_statement[Credito]-income_statement[Debito]
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 9894defb-d085-4ea2-9d4f-6b75f2c9b6da
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-US"}
+
+	column Nivel_Nombre
+		dataType: string
+		lineageTag: 5dd0147d-ca8f-4c1a-8540-88739285195a
+		summarizeBy: none
+		sourceColumn: Nivel_Nombre
+
+		annotation SummarizationSetBy = Automatic
+
+	partition income_statement = m
+		mode: import
+		source =
+				let
+				    Origen = Libro_Auxiliar,
+				    #"Filas filtradas" = Table.SelectRows(Origen, each not Text.StartsWith([Codigo_Cuenta], "1") and not Text.StartsWith([Codigo_Cuenta], "2") and not Text.StartsWith([Codigo_Cuenta], "3")),
+				    #"Filas filtradas1" = Table.SelectRows(#"Filas filtradas", each ([Nombre_Documento] <> "Cancelacion Cuentas"))
+				in
+				    #"Filas filtradas1"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

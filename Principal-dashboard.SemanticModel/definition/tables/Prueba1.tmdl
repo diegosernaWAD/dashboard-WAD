@@ -1,0 +1,230 @@
+table Prueba1
+	lineageTag: 7707d960-b02f-4a23-b628-1d2cdc7283fa
+
+	column Vencimiento
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 22aab26d-db9c-4a9e-9636-23e586a1fc87
+		summarizeBy: none
+		sourceColumn: Vencimiento
+
+		variation Variación
+			isDefault
+			relationship: f2d9363a-d251-4006-b435-4f67a33a00b9
+			defaultHierarchy: LocalDateTable_885ba77f-712e-4963-83b8-06b7108b9f52.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nombres
+		dataType: string
+		lineageTag: a0cfb921-7bea-4ccd-bc61-080c58c0e78b
+		summarizeBy: none
+		sourceColumn: Nombres
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdEmpresa
+		dataType: int64
+		formatString: 0
+		lineageTag: bb6affa2-8bf1-4231-9ea4-b131011c694e
+		summarizeBy: sum
+		sourceColumn: IdEmpresa
+
+		annotation SummarizationSetBy = Automatic
+
+	column AbonaADocumento
+		dataType: int64
+		formatString: 0
+		lineageTag: 97060329-2cb2-492d-b18a-ca8354082cdb
+		summarizeBy: sum
+		sourceColumn: AbonaADocumento
+
+		annotation SummarizationSetBy = Automatic
+
+	column Empresa
+		dataType: string
+		lineageTag: a6a5b9d3-aecf-43cf-8f52-30b8a54152be
+		summarizeBy: none
+		sourceColumn: Empresa
+
+		annotation SummarizationSetBy = Automatic
+
+	column Propiedades
+		dataType: string
+		lineageTag: bde5e954-0ac8-4477-8a4a-5768bc551ee8
+		summarizeBy: none
+		sourceColumn: Propiedades
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sucursal
+		dataType: string
+		lineageTag: a7d34437-69fd-40b3-a485-21bec29159cf
+		summarizeBy: none
+		sourceColumn: Sucursal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vend
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e278d72-eee4-414f-87da-af07ef186967
+		summarizeBy: sum
+		sourceColumn: Vend
+
+		annotation SummarizationSetBy = Automatic
+
+	column IdTercero
+		dataType: int64
+		formatString: 0
+		lineageTag: a0fd037e-5f38-450b-8d4a-5fa5d1a02a7e
+		summarizeBy: sum
+		sourceColumn: IdTercero
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Saldo Inicial'
+		dataType: double
+		lineageTag: 6e644c6a-a359-4437-b201-97d9a17bcbb1
+		summarizeBy: sum
+		sourceColumn: Saldo Inicial
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Ene
+		dataType: double
+		lineageTag: 29fc2688-d032-4fee-af82-d370448fc8e1
+		summarizeBy: sum
+		sourceColumn: Ene
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Feb
+		dataType: double
+		lineageTag: f3856ff8-6221-4908-9099-58de6907a940
+		summarizeBy: sum
+		sourceColumn: Feb
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Mar
+		dataType: double
+		lineageTag: 4b46020f-98f0-4d61-afd3-80ca13d4a7e2
+		summarizeBy: sum
+		sourceColumn: Mar
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Abr
+		dataType: double
+		lineageTag: 17d3308a-572b-4c52-b3da-cd22cd8d9896
+		summarizeBy: sum
+		sourceColumn: Abr
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column May
+		dataType: double
+		lineageTag: a7d075e9-3baf-422b-82ef-fdd985f736b5
+		summarizeBy: sum
+		sourceColumn: May
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Jun
+		dataType: double
+		lineageTag: 1a7182c3-2efd-4f18-b765-da35c72197d8
+		summarizeBy: sum
+		sourceColumn: Jun
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Jul
+		dataType: double
+		lineageTag: d14206bd-b6a1-4bbc-8c99-e4431e8223b7
+		summarizeBy: sum
+		sourceColumn: Jul
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Ago
+		dataType: double
+		lineageTag: 4aa19c20-b58e-49ab-b3dc-f06ecda198b4
+		summarizeBy: sum
+		sourceColumn: Ago
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Sep
+		dataType: double
+		lineageTag: 1dc78235-25c5-4d11-8f91-2a9bd34794a9
+		summarizeBy: sum
+		sourceColumn: Sep
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Oct
+		dataType: double
+		lineageTag: cc6b36a9-5f8b-4667-b96a-0b75225d62cf
+		summarizeBy: sum
+		sourceColumn: Oct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Nov
+		dataType: double
+		lineageTag: 074fd940-3059-4414-a956-53d3e8ae29bd
+		summarizeBy: sum
+		sourceColumn: Nov
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Dic
+		dataType: double
+		lineageTag: ac964b4f-a1fd-4f58-bc18-23e3f0fffe3f
+		summarizeBy: sum
+		sourceColumn: Dic
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Prueba1 = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("SRFWDCONT01\WORLDOFFICE19", "WEARE DEV SAS"),
+				    #"Filas filtradas" = Table.SelectRows(Origen, each ([Name] = "FNC_EstadoCarteraVencimientoMesAMes")),
+				    dbo_FNC_EstadoCarteraVencimientoMesAMes = #"Filas filtradas"{[Schema="dbo",Item="FNC_EstadoCarteraVencimientoMesAMes"]}[Data],
+				    #"Función invocadadbo_FNC_EstadoCarteraVencimientoMesAMes" = dbo_FNC_EstadoCarteraVencimientoMesAMes(2025)
+				in
+				    #"Función invocadadbo_FNC_EstadoCarteraVencimientoMesAMes"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

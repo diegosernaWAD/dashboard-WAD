@@ -1,0 +1,68 @@
+table M_IncomeStatement
+	lineageTag: 12ab24c6-bf4a-4577-960f-14279de4f579
+
+	measure Revenue1 =
+			CALCULATE(
+			    SUM(income_statement[Movimiento]),
+			    movement_accounts[Cuenta_Nivel]="4",
+			    income_statement[Nombre_Documento]="Factura de venta")
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 6c049fcd-1b9c-4989-ae08-3d926585d7ab
+
+	measure Cost = ```
+			-CALCULATE(SUM(income_statement[Movimiento]),movement_accounts[Cuenta_Nivel] IN {"5","6","7"})
+			
+			```
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: df241c95-74b1-4894-b67b-ebcc0ff87eeb
+
+	measure Expenses = SUM(income_statement[Movimiento])
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: a5d18085-473c-46c1-8e84-9b41c0e09f41
+
+	measure OperatingIncome =
+			
+			CALCULATE(
+			    SUM(income_statement[Movimiento]),
+			    FILTER(
+			        movement_accounts,
+			        movement_accounts[Cuenta_Grupo] IN {"41","51","52"}
+			    )
+			)
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 6ba04bb4-9930-4a54-a741-4f88d5c92d3e
+
+	measure %OperatingIncome =
+			
+			[OperatingIncome]/[Revenue1]
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: 88c81f00-2497-4c39-9782-95d2aae2da5a
+
+	measure Values2024 =
+			CALCULATE(
+			    SUM(income_statement[Movimiento]),
+			    'Calendar'[year]="2024"
+			)
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 7ae6e070-12fb-4421-973c-f64e247ac6c0
+
+	measure Values2025 =
+			CALCULATE(
+			    SUM(income_statement[Movimiento]),
+			    'Calendar'[year]="2025"
+			)
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: e228399c-e3ed-499c-bd7b-db79d0ff97d8
+
+	partition M_IncomeStatement = m
+		mode: import
+		source =
+				let
+				    Origen = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Columna1 = _t]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(Origen,{{"Columna1", type text}}),
+				    #"Columnas quitadas" = Table.RemoveColumns(#"Tipo cambiado",{"Columna1"})
+				in
+				    #"Columnas quitadas"
+
+	annotation PBI_ResultType = Table
+

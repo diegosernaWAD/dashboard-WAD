@@ -1,0 +1,35 @@
+table table_accounts
+	lineageTag: 5cc00566-90c6-417b-bd08-e3057fdf20eb
+
+	column CuentaContable
+		dataType: string
+		lineageTag: eb2d496c-dfcd-4480-b5f4-f82d8d1dbde4
+		summarizeBy: none
+		sourceColumn: CuentaContable
+
+		annotation SummarizationSetBy = Automatic
+
+	column CódigoCuentaContable
+		dataType: string
+		lineageTag: 636aa4bb-4157-4420-9da9-54c17362bd08
+		summarizeBy: none
+		sourceColumn: CódigoCuentaContable
+
+		annotation SummarizationSetBy = Automatic
+
+	partition table_accounts = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database("SRFWDCONT01\WORLDOFFICE19", "WEARE DEV SAS"),
+				    dbo_CuentasContables = Origen{[Schema="dbo",Item="CuentasContables"]}[Data],
+				    #"Otras columnas quitadas" = Table.SelectColumns(dbo_CuentasContables,{"CuentaContable", "CódigoCuentaContable", "ManejoDeTercero"}),
+				    #"Columnas quitadas" = Table.RemoveColumns(#"Otras columnas quitadas",{"ManejoDeTercero"}),
+				    #"Filas ordenadas" = Table.Sort(#"Columnas quitadas",{{"CódigoCuentaContable", Order.Ascending}})
+				in
+				    #"Filas ordenadas"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+
